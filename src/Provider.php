@@ -12,7 +12,9 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase('https://user.humanapi.co/oauth/authorize', $state);
+        return $this->buildAuthUrlFromBase(
+            'https://user.humanapi.co/oauth/authorize', $state
+        );
     }
 
     /**
@@ -28,7 +30,8 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get('https://api.humanapi.co/v1/human/profile', [
+        $response = $this->getHttpClient()->get(
+            'https://api.humanapi.co/v1/human/profile', [
             'headers' => [
                 'Authorization' => 'Bearer '.$token,
             ],
@@ -43,11 +46,8 @@ class Provider extends AbstractProvider implements ProviderInterface
     protected function mapUserToObject(array $user)
     {
         return (new User())->setRaw($user)->map([
-            'id'       => $user['userId'],
-            'nickname' => null,
-            'name'     => null,
-            'email'    => $user['email'],
-            'avatar'   => null,
+            'id' => $user['userId'], 'nickname' => null, 'name' => null,
+            'email' => $user['email'], 'avatar' => null,
         ]);
     }
 
@@ -56,6 +56,8 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenFields($code)
     {
-        return array_merge(parent::getTokenFields($code), ['grant_type' => 'authorization_code']);
+        return array_merge(parent::getTokenFields($code), [
+            'grant_type' => 'authorization_code',
+        ]);
     }
 }
