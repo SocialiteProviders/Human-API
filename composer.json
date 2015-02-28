@@ -1,5 +1,5 @@
 {
-    "name": "socialiteproviders/humanapi",
+    "name": "socialiteproviders/human-api",
     "description": "HumanApi OAuth2 Provider for Laravel Socialite",
     "license": "MIT",
     "authors": [{
