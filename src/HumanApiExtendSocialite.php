@@ -1,4 +1,5 @@
 <?php
+
 namespace SocialiteProviders\HumanApi;
 
 use SocialiteProviders\Manager\SocialiteWasCalled;
